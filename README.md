@@ -1,6 +1,6 @@
 # Prolab1 1.Proje
+
 # Minumum Çevreleyen Çember 
-## (Minimum Enclosing Circle(MEC))-B Spline
 
 # Özet
 

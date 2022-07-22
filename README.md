@@ -20,12 +20,13 @@ Bu proje C programlama dilinde geliştirilmiş olup, geliştirme ortamı olarak 
 çıkarmış olamakla birlikte çalışmalarımıza ön hazırlık yaptık.Projenin isterleri,isterlere yönelik araştırmalar,grup içerisinde gerekli olan iş bölümü yapılmış olup gerekli olan tüm bilgilerin ışığında proje ana hatları ile belirginleşmiş oldu.Bize geriye kalan çıkabilecek hataların saptanıp çözümleri yapıldıktan sonra
 derleyici ortamımızda ilk adımları atmış bulunduk.Proje yaklaşık 2 hafta gibi kısa bir süre de ana hatlarıyla birlikte bitmiş oldu.
 
-#3- YÖNTEM
+# 3- YÖNTEM
 
 Main fonksiyonumuzun yardımıyla klasörün içinde bulunan .txt dosyasına ulaşımı sağladık.Bundan sonra alınan noktalar fonksiyonlara gönderildi ve tüm hesaplamalar yaptırtıldı. GL/glut.h
 kütüphanemizi kullanarak ekrana çizdirme işlemini başarıyla yaptık.Böylece bizden
 istenen isterleri net bir şekilde göstermiş olduk.Aynı zamanda klavyeden herhangi bir tuşa bastırarak b-spline çizgilerini çizdirip kullanıcıdan da aktif bir rol oynamasını istedik.
-Projede kullanılan fonksiyonlar ve zaman karmaşıklığı:
+
+## Projede kullanılan fonksiyonlar ve zaman karmaşıklığı:
 ## Çember için kullanılan fonksiyonlar:
 ### mesafe_hesaplama():
 Noktalar arasındaki mesafeleri hesaplayarak çember fonksiyonlarının içine gönderir.Fonksiyonun içinde döngüleryada farklı fonksiyonlar olmadığı için zaman karmaşıklığı O(1).
@@ -35,20 +36,28 @@ Yapılan hesaplamalara göre olabilmesi muhtemel çemberler arasında arama yapa
 İki nokta arasında matematiksel işlem yapar ve bu işlemlerin sonucunu çember_bul() fonksiyonuna göderir.Fonksiyonun içinde for döngüsü bulunduğu için zaman karmaşıklığı O(n).
 ### tek_nokta_verilen():
 Rastgele artımlı yöntem fonksiyonda hesaplanan değerleri kullanarak belli değerleri hesaplar ve tutar, bu noktalar üzerinde belli işlemleri yapar ardından bu noktaları iki_nokta_verilen() fonksiyonuna gönderir.Fonksiyonun içinde for döngüsü bulunmaktadır.Döngünün içinde iki_nokta_verilen fonksiyonu çağrıldığı için zaman karmaşıklığı O(n^2)
-### rastgele_artimli_yontem():verilen noktaları tutar,bu noktalar üzerinde belli işlemleri yapar ardından bu noktaları tek_nota_verilen() fonksiyonuna gönderir.
-Döngünün içinde tek_nokta_verilen fonksiyonu çağrıldığı için (zaman karmaşıklığı O(n^3))
+### rastgele_artimli_yontem():
+Verilen noktaları tutar,bu noktalar üzerinde belli işlemleri yapar ardından bu noktaları tek_nota_verilen() fonksiyonuna gönderir.Döngünün içinde tek_nokta_verilen fonksiyonu çağrıldığı için (zaman karmaşıklığı O(n^3))
 ## B-spline için kullanılan fonksiyonlar:
-### vektor_carpim():Verilen nokta değerlerini hesaplayıp bu noktalar arasında vektörel bir çarpım hesaplatır. Fonksiyonun içinde döngüler yada farklı fonksiyonlar olmadığı için zaman karmaşıklığı O(1).
-### matrix_hesaplama():Ara değer olarak tuttuğumuz 4*4 lük değerlerimizi
-kullanarak noktaları matrix olarak hesaplar. Fonksiyonun içinde döngüler yada farklı fonksiyonlar olmadığı için zaman karmaşıklığı O(1).
+### vektor_carpim():
+Verilen nokta değerlerini hesaplayıp bu noktalar arasında vektörel bir çarpım hesaplatır. Fonksiyonun içinde döngüler yada farklı fonksiyonlar olmadığı için zaman karmaşıklığı O(1).
+### matrix_hesaplama():
+Ara değer olarak tuttuğumuz 4*4 lük değerlerimizi kullanarak noktaları matrix olarak hesaplar. Fonksiyonun içinde döngüler yada farklı fonksiyonlar olmadığı için zaman karmaşıklığı O(1).
+
 ## Ortak kullanılan fonksiyonlar:
-### metinyaz():Koordinat da noktaların yerini belirlememize yarıyacak sayıları yazmamızı saylayan fonksiyon. Fonksiyonun içinde for döngüsü bulunduğu için zaman
+
+### metinyaz():
+Koordinat da noktaların yerini belirlememize yarıyacak sayıları yazmamızı saylayan fonksiyon. Fonksiyonun içinde for döngüsü bulunduğu için zaman
 karmaşıklığı O(n).
-### egri_ciz():B-spline’ı glut fonksiyonları ile ekrana çizdirir. Fonksiyonun içinde for döngüsü bulunduğu için zaman karmaşıklığı O(n).
-### goster():Çemberi,koordinat düzlemini ve üzerindeki bütün bilgileri glut fonksiyonları ile ekrana yazdırır. Döngünün içinde rastgele_artimli_artan fonksiyonu
+### egri_ciz():
+B-spline’ı glut fonksiyonları ile ekrana çizdirir. Fonksiyonun içinde for döngüsü bulunduğu için zaman karmaşıklığı O(n).
+### goster():
+Çemberi,koordinat düzlemini ve üzerindeki bütün bilgileri glut fonksiyonları ile ekrana yazdırır. Döngünün içinde rastgele_artimli_artan fonksiyonu
 çağrıldığı için zaman karmaşıklığı O(n^3)
-### nokta_gir():Girilen noktaları alır sıralar ve gereken fonksiyonlara gönderir.Fonksiyon içinde iç içe 2 tane for döngüsü olduğu için zaman karmaşıklığı O(n^2).
-### klavye():Sadece klavyeyi çalıştırarak Bspline’ı çizdirmeyi sağlar. Döngünün
+### nokta_gir():
+Girilen noktaları alır sıralar ve gereken fonksiyonlara gönderir.Fonksiyon içinde iç içe 2 tane for döngüsü olduğu için zaman karmaşıklığı O(n^2).
+### klavye():
+Sadece klavyeyi çalıştırarak Bspline’ı çizdirmeyi sağlar. Döngünün
 içinde egri_ciz fonksiyonu çağrıldığı için zaman karmaşıklığı O(n).
 ## Zaman karmaşıklığı
 Kodun zaman karmaşıklığını O(n^3) bulduk.Her fonksiyonun kendi zaman karmaşıklığını ayrı olarak hesaplayıp yukarıda gösterdik.
